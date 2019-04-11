@@ -1,5 +1,7 @@
 import Ballot from "./ballot";
 
+const { threshold, duplicateCandidates } = require("../../election.json");
+
 export function unbreakableTie(totals: { [candidate: string]: number }) {
   return (
     Object.values(totals).every((a, i, v) => a === v[0]) &&
@@ -24,7 +26,7 @@ export function rankCandidates(totals: { [candidate: string]: number }) {
 export function winner(totals: { [candidate: string]: number }) {
   const { candidates, totalVotes } = rankCandidates(totals);
 
-  if (totals[candidates[0]] > totalVotes * 0.5) {
+  if (totals[candidates[0]] > totalVotes * threshold) {
     return candidates[0];
   } else {
     return null;
@@ -37,7 +39,7 @@ export function winner(totals: { [candidate: string]: number }) {
 export default function runoff(position: string, ballots: Ballot[]) {
   let totals: { [candidate: string]: number } = {};
   let round = 1;
-  let win = null;
+  let win: string | null = null;
 
   do {
     totals = {};
@@ -102,4 +104,11 @@ export default function runoff(position: string, ballots: Ballot[]) {
   } while (win === null);
 
   console.log(`Congratuations ${win}! You have been elected ${position}! \n`);
+
+  // If the setting is set, eliminate this canddiate from
+  if (!duplicateCandidates) {
+    ballots.forEach(ballot => ballot.eliminateCandidate(`${win}`));
+  }
+
+  return win;
 }

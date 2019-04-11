@@ -29,6 +29,13 @@ export default class Ballot {
     );
   }
 
+  // Eliminates a candidate from every position
+  eliminateCandidate(candidate: string) {
+    Object.keys(this.preferences).forEach(position =>
+      this.eliminate(position, candidate)
+    );
+  }
+
   getVote(position: string) {
     return (this.preferences[position] || [])[0];
   }

@@ -1,0 +1,14 @@
+{
+  "spreadsheet": "10cZpzIGi6xbe7Hv_Dw8DJjnQl4SSyLwr-8MkhymnkaY",
+  "positions": [
+    "President",
+    "Vice President",
+    "Treasurer",
+    "Team Captain (3796A)",
+    "Team Captain (3796B)",
+    "Team Captain (3796C)",
+    "Team Captain (3796E)"
+  ],
+  "threshold": 0.5,
+  "duplicateCandidates": false
+}
