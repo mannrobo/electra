@@ -1,9 +1,9 @@
 {
-  "name": "instant-runoff",
+  "name": "electra",
   "version": "0.0.0",
   "description": "Instant runoff vote tallying from Google Sheets",
   "main": "out/main.js",
-  "repository": "https://github.com/mannrobo/elections",
+  "repository": "https://github.com/mannrobo/electra",
   "author": "Brendan McGuire",
   "license": "MIT",
   "private": false,
