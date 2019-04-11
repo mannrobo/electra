@@ -1,0 +1,13 @@
+{
+  "name": "instant-runoff",
+  "version": "0.0.0",
+  "description": "Instant runoff vote tallying from Google Sheets",
+  "main": "out/main.js",
+  "repository": "https://github.com/mannrobo/elections",
+  "author": "Brendan McGuire",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "googleapis": "^39.2.0"
+  }
+}
