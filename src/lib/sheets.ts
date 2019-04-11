@@ -31,6 +31,7 @@ export default async function getBallots(spreadsheetId: string) {
       range: "Ballots!A2:AE"
     })
     .then(resp => resp.data.values as string[][])
+    .then(ballots => ballots.filter( b => b[0] ))
     .then(ballots => ballots.map(ballot => Ballot.fromRawData(ballot, rows)));
 
   console.log(`Done! Recieved ${ballots.length} ballots`);

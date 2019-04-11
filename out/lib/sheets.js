@@ -71,6 +71,7 @@ function getBallots(spreadsheetId) {
                             range: "Ballots!A2:AE"
                         })
                             .then(function (resp) { return resp.data.values; })
+                            .then(function (ballots) { return ballots.filter(function (b) { return b[0]; }); })
                             .then(function (ballots) { return ballots.map(function (ballot) { return ballot_1.default.fromRawData(ballot, rows); }); })];
                 case 2:
                     ballots = _a.sent();
