@@ -18,7 +18,8 @@ Modify `election.json` to look like this:
             "Positions",
             "To elect"
         ],
-        "threshold": 0.5 
+        "threshold": 0.5,
+        "duplicateCandidates": false
     }
 
 Where:
@@ -28,6 +29,8 @@ Where:
 `positions` contains all positions up for election
 
 `threshold` is the percentage of votes a candidate has to recieve to be elected
+
+`duplicateCandidates` refers to whether candidates should be eliminated from all other races (by name) once they are elected to one position
 
 ## Run
 
