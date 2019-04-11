@@ -33,6 +33,13 @@ var Ballot = /** @class */ (function () {
             return;
         this.preferences[position] = this.preferences[position].filter(function (v) { return v !== candidate; });
     };
+    // Eliminates a candidate from every position
+    Ballot.prototype.eliminateCandidate = function (candidate) {
+        var _this = this;
+        Object.keys(this.preferences).forEach(function (position) {
+            return _this.eliminate(position, candidate);
+        });
+    };
     Ballot.prototype.getVote = function (position) {
         return (this.preferences[position] || [])[0];
     };

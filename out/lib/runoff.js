@@ -10,6 +10,7 @@ var __values = (this && this.__values) || function (o) {
     };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var _a = require("../../election.json"), threshold = _a.threshold, duplicateCandidates = _a.duplicateCandidates;
 function unbreakableTie(totals) {
     return (Object.values(totals).every(function (a, i, v) { return a === v[0]; }) &&
         Object.values(totals).length > 1);
@@ -28,7 +29,7 @@ function rankCandidates(totals) {
 exports.rankCandidates = rankCandidates;
 function winner(totals) {
     var _a = rankCandidates(totals), candidates = _a.candidates, totalVotes = _a.totalVotes;
-    if (totals[candidates[0]] > totalVotes * 0.5) {
+    if (totals[candidates[0]] > totalVotes * threshold) {
         return candidates[0];
     }
     else {
@@ -104,5 +105,10 @@ function runoff(position, ballots) {
             return state_1.value;
     } while (win === null);
     console.log("Congratuations " + win + "! You have been elected " + position + "! \n");
+    // If the setting is set, eliminate this canddiate from
+    if (!duplicateCandidates) {
+        ballots.forEach(function (ballot) { return ballot.eliminateCandidate("" + win); });
+    }
+    return win;
 }
 exports.default = runoff;
